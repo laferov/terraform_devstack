@@ -1,0 +1,6 @@
+region = "ru-1"
+availability_zone = "ru-1a"
+volume_size = "100"
+floating_ip_address = "46.182.24.94"
+image_id = "870cbea3-2cdb-4b6f-ae14-9ed8899f5934"
+flavor_id = "2011"
