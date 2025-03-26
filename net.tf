@@ -1,3 +1,11 @@
+resource "selectel_vpc_subnet_v2" "public_subnet_1" {
+  project_id    = var.project-id
+  region        = var.region
+  ip_version    = "ipv4"
+  prefix_length = 28
+}
+
+
 resource "openstack_networking_network_v2" "network_1" {
   name           = "private-network"
   admin_state_up = "true"
