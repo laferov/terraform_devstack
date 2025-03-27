@@ -1,12 +1,16 @@
-resource "openstack_compute_instance_v2" "devstack_server" {
-  name              = "devstack_server"
+resource "openstack_compute_instance_v2" "devstack_test_server_2" {
+  #count             = 3
+  #name              = "devstack_test_server-${count.index + 1}"
+  name              = "devstack_test_server_2"
   flavor_id         = var.flavor_id
   availability_zone = var.availability_zone
-  user_data = "${local.common_user_data}"
+
+  user_data = local.common_user_data
 
   network {
-    port = openstack_networking_port_v2.port_devstack_server.id
+    uuid = "7ff0761d-2e5d-41c1-bc53-c224b7611dc6"
   }
+
 
   block_device {
     uuid                  = var.image_id
@@ -16,11 +20,5 @@ resource "openstack_compute_instance_v2" "devstack_server" {
     destination_type      = "volume"
     delete_on_termination = true
   }
-  depends_on = [ openstack_networking_network_v2.network_1 ]
-}
-
-
-resource "openstack_networking_floatingip_associate_v2" "association_devstack" {
-  port_id     = openstack_networking_port_v2.port_devstack_server.id
-  floating_ip = var.floating_ip_address
+  #depends_on = [selectel_vpc_subnet_v2.subnet_1]
 }

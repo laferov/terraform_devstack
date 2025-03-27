@@ -16,7 +16,7 @@ provider "selectel" {
   domain_name = var.service-account-id
   username    = var.service-account-name
   password    = var.service-account-password
-  auth_region = "pool"
+  auth_region = var.region
   auth_url    = "https://cloud.api.selcloud.ru/identity/v3/"
 }
 
